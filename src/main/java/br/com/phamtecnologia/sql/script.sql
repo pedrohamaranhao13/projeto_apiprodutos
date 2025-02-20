@@ -33,3 +33,20 @@ INSERT INTO tbl_fornecedor (id_pk, cnpj, nome) VALUES
   (gen_random_uuid(), 'Esportes'),
   (gen_random_uuid(), 'Vestuário'),
   (gen_random_uuid(), 'Beleza e Saúde');
+  
+  -- join
+ select p.id_pk as idproduto,
+p.nome,
+p.preco,
+p.quantidade,
+p.descricao,
+f.id_pk as idfornecedor,
+f.nome as nomefornecedor,
+f.cnpj,
+c.id_pk as idcategoria,
+c.nome as nomecategoria
+from tbl_produto p
+inner join tbl_fornecedor f on p.fornecedor_id_pk = f.id_pk
+inner join tbl_categoria c on p.categoria_id_fk = c.id_pk
+
+
